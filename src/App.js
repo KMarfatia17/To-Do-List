@@ -1,25 +1,17 @@
-import logo from './logo.svg';
-import './App.css';
+import logo from './logo.svg'
+import './App.css'
+import TaskForm from './TaskForm'
+import { Fragment, useState } from 'react'
+import { useGlobalContext } from './context'
 
 function App() {
+  const { tasks } = useGlobalContext()
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <Fragment>
+      <TaskForm />
+      {tasks.length >= 1 && <TaskList />}
+    </Fragment>
+  )
 }
 
-export default App;
+export default App
